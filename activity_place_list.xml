@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.abevillalobos.lakbayph.HomeActivity"
+    android:background="@drawable/banigedt">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:text="MY ACCOUNT"
+        android:textColor="#FFF"
+        android:id="@+id/pl_btn_user"
+        android:typeface="serif"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp"
+        android:background="@null"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ABOUT"
+        android:textColor="#FFF"
+        android:id="@+id/pl_btn_about"
+        android:layout_alignBottom="@+id/pl_btn_user"
+        android:layout_alignParentEnd="true"
+        android:typeface="serif"
+        android:textSize="20sp"
+        android:background="@null"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/pl_lakbay"
+        android:text="LAKBAY"
+        android:textSize="50sp"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:layout_below="@+id/pl_btn_user"
+        android:layout_alignParentEnd="false"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/pl_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pl_lakbay"
+        android:text="PLACES"
+        android:textColor="#ffffff"
+        android:textSize="25sp"
+        android:typeface="serif"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/pl_list_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pl_place"
+        android:background="#ffffff" />
+</RelativeLayout>

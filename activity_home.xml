@@ -3,79 +3,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.abevillalobos.lakbayph.HomeActivity">
+    tools:context="com.example.abevillalobos.lakbayph.HomeActivity"
+    android:background="@drawable/banigedt">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Account"
-        android:id="@+id/h_txv_user"
+        android:layout_height="25dp"
+        android:text="MY ACCOUNT"
+        android:textColor="#ffffff"
+        android:id="@+id/h_btn_user"
+        android:typeface="serif"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:background="@null"
+        android:textStyle="bold" />
 
-    <TextView
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Out"
-        android:id="@+id/h_txv_signout"
-        android:layout_alignBottom="@+id/h_txv_user"
+        android:text="ABOUT"
+        android:textColor="#ffffff"
+        android:id="@+id/h_btn_about"
+        android:layout_alignBottom="@+id/h_btn_user"
         android:layout_alignParentEnd="true"
-        android:textSize="20sp"/>
+        android:typeface="serif"
+        android:textSize="20sp"
+        android:background="@null"
+        android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/h_img_lakbay"
+    <TextView
+        android:id="@+id/h_lakbay"
+        android:text="LAKBAY"
+        android:textSize="88sp"
+        android:textColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/logo"
-        android:layout_below="@+id/h_txv_user"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/h_btn_user"
+        android:gravity="center"
+        android:typeface="serif"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:id="@id/h_ll1"
+        android:id="@+id/h_ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/h_img_lakbay">
-        <ImageButton
-            android:id="@+id/h_imb_beach1"
+        android:layout_below="@+id/h_lakbay">
+        <Button
+            android:id="@+id/h_imb_culture"
+            android:text="Culture"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="130dp"
             android:layout_gravity="start"
             android:layout_weight="1"
-            android:background="@drawable/beach"/>
+            android:background="@drawable/cultureedt"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
 
-        <ImageButton
-            android:id="@+id/h_imb_beach2"
+        <Button
+            android:id="@+id/h_imb_beach"
+            android:text="BEACH"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="130dp"
             android:layout_gravity="end"
             android:layout_weight="1"
-            android:background="@drawable/beach"/>
+            android:background="@drawable/beachedt"
+            android:layout_margin="5dp"
+            android:typeface="serif"
+            android:textStyle="bold" />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/h_ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/h_ll1">
-        <ImageButton
-            android:id="@+id/h_imb_beach3"
+        <Button
+            android:id="@+id/h_imb_nature"
+            android:text="NATURE"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="130dp"
             android:layout_gravity="start"
             android:layout_weight="1"
-            android:background="@drawable/beach"/>
+            android:background="@drawable/natureedt"
+            android:layout_margin="5dp"
+            android:typeface="serif"
+            android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/h_imb_beach4"
+        <Button
+            android:id="@+id/h_imb_festivals"
+            android:text="FESTIVALS"
+            android:textSize="30sp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="130dp"
             android:layout_gravity="end"
             android:layout_weight="1"
-            android:background="@drawable/beach"/>
+            android:background="@drawable/festivedt"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NEARBY PLACES"
+        android:textSize="30sp"
+        android:textColor="#ffffff"
+        android:id="@+id/h_imb_nearby"
+        android:layout_below="@+id/h_ll2"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/nearbyedt"
+        android:layout_margin="5dp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
 </RelativeLayout>
