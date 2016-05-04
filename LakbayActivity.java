@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -15,12 +16,12 @@ public class LakbayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lakbay);
 
 
-        ImageButton sBtnH = (ImageButton) findViewById(R.id.s_btn_h);
-        sBtnH.setOnClickListener(new View.OnClickListener() {
+        Button lBtnLakbay = (Button) findViewById(R.id.l_btn_lakbay);
+        lBtnLakbay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(LakbayActivity.this, "Starting app...", Toast.LENGTH_SHORT).show();
-                Intent LakbaytoLoginIntent = new Intent(LakbayActivity.this, LoginActivity.class);
+                Intent LakbaytoLoginIntent = new Intent(LakbayActivity.this, HomeActivity.class);
                 startActivity(LakbaytoLoginIntent);
 
             }
