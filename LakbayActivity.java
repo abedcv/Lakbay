@@ -16,7 +16,7 @@ public class LakbayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lakbay);
 
 
-        Button lBtnLakbay = (Button) findViewById(R.id.l_btn_lakbay);
+        ImageButton lBtnLakbay = (ImageButton) findViewById(R.id.l_btn_lakbay);
         lBtnLakbay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

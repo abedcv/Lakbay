@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,11 +34,21 @@ public class PlaceListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_list);
 
+        Button hBtnUser= (Button) findViewById(R.id.pl_btn_user);
+        hBtnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent PlaceListtoUserIntent = new Intent(PlaceListActivity.this, UserActivity.class);
+                startActivity(PlaceListtoUserIntent);
+            }
+        });
+
         Intent GetExtra = getIntent();
-        final String search = GetExtra.getStringExtra("TYPE");
+        final String typen = GetExtra.getStringExtra("TYPE");
+        final String search = GetExtra.getStringExtra("URLN");
 
         TextView places = (TextView) findViewById(R.id.pl_place);
-        String placesearch = "PLACES > " + search;
+        String placesearch = "PLACES > " + typen;
         places.setText(placesearch);
 
         pladapter = new ArrayAdapter<PlaceList>(this, android.R.layout.simple_list_item_1);
@@ -49,19 +60,36 @@ public class PlaceListActivity extends AppCompatActivity {
         pList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LakbayApp app = (LakbayApp) getApplication();
-                Intent ListtoInfoIntent = new Intent(PlaceListActivity.this, PlaceInfoActivity.class);
+
                 String url = pladapter.getItem(position).get_url();
-                String name = pladapter.getItem(position).get_name();
-                downloadPlaceInfo(url);
-                ListtoInfoIntent.putExtra("NAME", name);
-                ListtoInfoIntent.putExtra("TYPE", search);
-                ListtoInfoIntent.putExtra("LOCATION", app.getPiloc());
-                ListtoInfoIntent.putExtra("CONTENT", app.getPicont());
-                startActivity(ListtoInfoIntent);
+                downloadPlaceInfo(url, position);
+
+
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent GetExtra = getIntent();
+        final String search = GetExtra.getStringExtra("URLN");
+        pladapter = new ArrayAdapter<PlaceList>(this, android.R.layout.simple_list_item_1);
+        final ListView pList = (ListView) findViewById(R.id.pl_list_place);
+        pList.setAdapter(pladapter);
+
+        downloadPlaceList(search);
+
+        pList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String url = pladapter.getItem(position).get_url();
+                downloadPlaceInfo(url, position);
+            }
+        });
     }
 
     private void parsePlacesList(String jsonStr, List<PlaceList> placeLists) throws JSONException{
@@ -107,6 +135,7 @@ public class PlaceListActivity extends AppCompatActivity {
                 }
 
                 return listofplaces;
+
             }
 
             @Override
@@ -126,36 +155,48 @@ public class PlaceListActivity extends AppCompatActivity {
         downloadTask.execute();
     }
 
+
     private void parsePlacesData(String jsonStr) throws JSONException {
         JSONObject rootObj = new JSONObject(jsonStr);
+        String date = rootObj.getString("date");
+        String loc = rootObj.getString("parentPage");
+        String loca = loc.replace("/en/", "");
+        String location = loca.replace("_", " ");
+        String name = rootObj.getString("name");
+
         LakbayApp app = (LakbayApp) getApplication();
+        app.setAname(name);
+        app.setAdate(date);
+        app.setAloc(location);
 
-        app.setPiloc(rootObj.getString("location"));
+        JSONArray placeArr = rootObj.getJSONArray("sections");
 
-        JSONArray sectArr = rootObj.getJSONArray("sections");
-        for (int iIdx = 0; iIdx < sectArr.length(); iIdx++){
-            JSONObject secObj = sectArr.getJSONObject(iIdx);
+        for (int iIdx = 0; iIdx < placeArr.length(); iIdx++){
+            JSONObject secObj = placeArr.getJSONObject(iIdx);
+            JSONArray placeArray = secObj.getJSONArray("sections");
 
-            JSONArray contArr = secObj.getJSONArray("sections");
-            for (int jIdx = 0; jIdx < contArr.length(); jIdx++) {
-                JSONObject contObj = contArr.getJSONObject(jIdx);
-
-                app.setPicont(contObj.getString("text"));
+            for (int jIdx = 0; iIdx < placeArray.length(); jIdx++) {
+                JSONObject placeObj = placeArray.getJSONObject(jIdx);
+                String content = placeObj.getString("text");
+                app.setAcont(content);
             }
+
         }
+
     }
 
-    private void downloadPlaceInfo(final String page){
-        AsyncTask<Void, Void, Void> downloadTask = new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                LakbayApp app = (LakbayApp) getApplication();
-                HttpClient hc = app.get_httpClient();
-                String apiURL = "http://wiki-sherpa.appspot.com/api/1/page";
-                apiURL += page;
+    private void downloadPlaceInfo(final String url, final int position){
 
+        AsyncTask<Void, String, PlaceInfo> downloadTask = new AsyncTask<Void, String, PlaceInfo>() {
+            @Override
+            protected PlaceInfo doInBackground(Void... params) {
+                LakbayApp app = (LakbayApp) getApplication();
+                HttpClient hc = app.get_http2();
+                String apiURL = "http://wiki-sherpa.appspot.com/api/1/page";
+                apiURL += url;
                 HttpGet apiREQ = new HttpGet(apiURL);
 
+                PlaceInfo infoplace = new PlaceInfo("a", "m", "p", "f");
                 try{
                     HttpResponse response = hc.execute(apiREQ);
                     int retStatus = response.getStatusLine().getStatusCode();
@@ -164,13 +205,37 @@ public class PlaceListActivity extends AppCompatActivity {
                     }
                     String jsonStr = EntityUtils.toString(response.getEntity());
                     parsePlacesData(jsonStr);
+                    publishProgress(jsonStr);
 
                 } catch (Exception e) {
-                    Log.e("Error", "Exception occurred: " + e.getMessage());
+                    publishProgress("Exception occurred: " + e.getMessage());
                 }
-                return null;
+                return infoplace;
+            }
+
+            @Override
+            protected void onPostExecute(PlaceInfo placeInfo) {
+
+                Intent GetExtra = getIntent();
+                final String search = GetExtra.getStringExtra("TYPE");
+                Intent ListtoInfoIntent = new Intent(PlaceListActivity.this, PlaceInfoActivity.class);
+
+                String name = pladapter.getItem(position).get_name();
+                ListtoInfoIntent.putExtra("NAME", name);
+                ListtoInfoIntent.putExtra("TYPE", search);
+                startActivity(ListtoInfoIntent);
+
+                super.onPostExecute(placeInfo);
+            }
+
+            @Override
+            protected void onProgressUpdate(String... values) {
+                Toast.makeText(PlaceListActivity.this, values[0], Toast.LENGTH_SHORT).show();
+                Log.i("Info", values[0]);
+                super.onProgressUpdate(values);
             }
         };
         downloadTask.execute();
     }
+
 }

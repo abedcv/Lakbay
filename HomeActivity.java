@@ -25,22 +25,15 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        Button hBtnAbout= (Button) findViewById(R.id.h_btn_about);
-        hBtnAbout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent HometoAboutIntent = new Intent(HomeActivity.this, AboutActivity.class);
-                startActivity(HometoAboutIntent);
-            }
-        });
-
         Button hBtnBeach= (Button) findViewById(R.id.h_imb_beach);
         hBtnBeach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
-                String type = "beach";
+                String type = "Beaches";
+                String urlname = "beach";
                 HometoPlaceListIntent.putExtra("TYPE", type);
+                HometoPlaceListIntent.putExtra("URLN", urlname);
                 startActivity(HometoPlaceListIntent);
             }
         });
@@ -50,8 +43,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
-                String type = "culture";
+                String type = "History";
+                String urlname = "historic%20park";
                 HometoPlaceListIntent.putExtra("TYPE", type);
+                HometoPlaceListIntent.putExtra("URLN", urlname);
                 startActivity(HometoPlaceListIntent);
             }
         });
@@ -61,8 +56,10 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
-                String type = "nature";
+                String type = "Nature";
+                String urlname = "nature%20park";
                 HometoPlaceListIntent.putExtra("TYPE", type);
+                HometoPlaceListIntent.putExtra("URLN", urlname);
                 startActivity(HometoPlaceListIntent);
             }
         });
@@ -73,7 +70,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
                 String type = "festivals";
+                String urlname = "festivals";
                 HometoPlaceListIntent.putExtra("TYPE", type);
+                HometoPlaceListIntent.putExtra("URLN", urlname);
                 startActivity(HometoPlaceListIntent);
             }
         });
@@ -84,7 +83,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
                 String type = "nearby";
+                String urlname = "nearby";
                 HometoPlaceListIntent.putExtra("TYPE", type);
+                HometoPlaceListIntent.putExtra("URLN", urlname);
                 startActivity(HometoPlaceListIntent);
             }
         });

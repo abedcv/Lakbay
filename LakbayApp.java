@@ -10,30 +10,56 @@ import org.apache.http.impl.client.DefaultHttpClient;
 /**
  * Created by Agassi on 29/04/2016.
  */
-public class LakbayApp extends Application{ private String _username = "";
+public class LakbayApp extends Application{
 
-    private String piloc = "";
-    private String picont = "";
 
     private HttpClient _httpClient = new DefaultHttpClient();
+    private HttpClient _http2 = new DefaultHttpClient();
+
+    private String aname = "x";
+    private String adate = "x";
+    private String aloc = "x";
+    private String acont = "x";
 
     public HttpClient get_httpClient() {
         return _httpClient;
     }
 
-    public String getPiloc() {
-        return piloc;
+    public HttpClient get_http2() {
+        return _http2;
     }
 
-    public void setPiloc(String piloc) {
-        this.piloc = piloc;
+    public String getAname() {
+        return aname;
     }
 
-    public String getPicont() {
-        return picont;
+    public void setAname(String aname) {
+        this.aname = aname;
     }
 
-    public void setPicont(String picont) {
-        this.picont = picont;
+    public String getAdate() {
+        return adate;
     }
+
+    public void setAdate(String adate) {
+        this.adate = adate;
+    }
+
+    public String getAloc() {
+        return aloc;
+    }
+
+    public void setAloc(String aloc) {
+        this.aloc = aloc;
+    }
+
+    public String getAcont() {
+        return acont;
+    }
+
+    public void setAcont(String acont) {
+        this.acont = acont;
+    }
+
+
 }

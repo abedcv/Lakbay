@@ -17,46 +17,35 @@
         android:layout_alignParentStart="true"
         android:textSize="20sp"
         android:background="@null"
-        android:textStyle="bold" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ABOUT"
-        android:textColor="#FFF"
-        android:id="@+id/pi_btn_about"
-        android:layout_alignBottom="@+id/pi_btn_user"
-        android:layout_alignParentEnd="true"
-        android:typeface="serif"
-        android:textSize="20sp"
-        android:background="@null"
-        android:textStyle="bold" />
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/pi_lakbay"
         android:text="LAKBAY"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textColor="#ffffff"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:typeface="serif"
         android:textStyle="bold"
         android:layout_below="@+id/pi_btn_user"
         android:layout_alignParentEnd="false"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:background="#87000000" />
 
     <TextView
         android:id="@+id/pi_place"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pi_lakbay"
         android:text="PLACES"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:typeface="serif"
-        android:textStyle="bold" />
+        android:textStyle="normal|italic"
+        android:background="#3cffffff" />
 
     <TextView
         android:id="@+id/pi_pname"
@@ -65,9 +54,12 @@
         android:layout_below="@+id/pi_place"
         android:text="PNAME"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="30sp"
         android:typeface="serif"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:background="#87000000" />
 
     <TextView
         android:id="@+id/pi_loc"
@@ -76,9 +68,10 @@
         android:layout_below="@+id/pi_pname"
         android:text="LOCATION"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:typeface="serif"
-        android:textStyle="bold" />
+        android:textStyle="normal"
+        android:background="#3cffffff" />
 
     <TextView
         android:id="@+id/pi_content"
@@ -86,8 +79,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pi_loc"
         android:text="CONTENT"
+        android:layout_marginTop="3dp"
         android:textColor="#ffffff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:typeface="serif"
-        android:textStyle="bold" />
+        android:textStyle="normal"
+        android:background="#3cffffff" />
 </RelativeLayout>
