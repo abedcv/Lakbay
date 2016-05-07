@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/banigedt"
+    tools:context="agassiagapito.exer03.MessageActivity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/btn_user_1"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/profpic"
+            android:scaleType="centerInside"
+            android:background="#00000000"/>
+
+        <TextView
+            android:id="@+id/txv_logged_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Unknown User"
+            android:textSize="20sp"
+            android:textColor="#fdfefc"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/btn_user_1"
+            android:layout_toEndOf="@+id/btn_user_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#fdfefc"
+            android:layout_height="wrap_content"
+            android:text="Lakbayer from:"
+            android:textSize="20sp"
+            android:id="@+id/txv_lakbayDisplay"
+            android:layout_below="@+id/txv_logged_username"
+            android:layout_toRightOf="@+id/btn_user_1"
+            android:layout_toEndOf="@+id/btn_user_1"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fdfefc"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/txv_hometown"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/btn_user_1" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_status"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/btn_post"
+            android:text="What&apos;s your Lakbay story?"
+            android:textColor="#fdfefc"
+         />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POST"
+            android:id="@+id/btn_post"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#bcd7b4"
+            android:background="#d26363"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="#78ffffff"/>
+
+</LinearLayout>

@@ -31,7 +31,7 @@ public class PlaceInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_info);
 
-        Button hBtnUser= (Button) findViewById(R.id.h_btn_user);
+        Button hBtnUser= (Button) findViewById(R.id.pi_btn_user);
         hBtnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

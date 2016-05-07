@@ -15,6 +15,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Intent GetExtra = getIntent();
+        final String nearby = GetExtra.getStringExtra("NBY");
 
         Button hBtnUser= (Button) findViewById(R.id.h_btn_user);
         hBtnUser.setOnClickListener(new View.OnClickListener() {
@@ -83,9 +85,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent HometoPlaceListIntent = new Intent(HomeActivity.this, PlaceListActivity.class);
                 String type = "nearby";
-                String urlname = "nearby";
                 HometoPlaceListIntent.putExtra("TYPE", type);
-                HometoPlaceListIntent.putExtra("URLN", urlname);
+                HometoPlaceListIntent.putExtra("URLN", nearby);
                 startActivity(HometoPlaceListIntent);
             }
         });

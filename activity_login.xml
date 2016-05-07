@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/banigedt"
+    tools:context="com.example.abevillalobos.lakbayph.LoginActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.56"
+            android:src="@drawable/beach" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="NAME:"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/edt_username"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="HOMETOWN:"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/edt_hometown"
+            android:layout_gravity="center_horizontal"
+            android:text="(e.g. Loyala Heights, Quezon City)"
+            android:textColor="#ffffff" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remember me"
+            android:id="@+id/chb_remember"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:textColor="#ffffff"
+            />
+
+        <Button
+            android:layout_width="102dp"
+            android:layout_height="59dp"
+            android:text="LAKBAY NA!"
+            android:id="@+id/btn_login"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#bcd7b4"
+            android:background="#d26363"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

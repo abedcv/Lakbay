@@ -21,7 +21,7 @@ public class LakbayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(LakbayActivity.this, "Starting app...", Toast.LENGTH_SHORT).show();
-                Intent LakbaytoLoginIntent = new Intent(LakbayActivity.this, HomeActivity.class);
+                Intent LakbaytoLoginIntent = new Intent(LakbayActivity.this, LoginActivity.class);
                 startActivity(LakbaytoLoginIntent);
 
             }
